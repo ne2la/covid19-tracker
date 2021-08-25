@@ -1,0 +1,22 @@
+.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #1569C7;
+    color: white;
+    padding: 10px 0px 0px 10px;
+    text-align: right;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-top: 5%;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin-right: 15%;
+  }
+  
+  li {
+    display: inline-block;
+    padding-left: 15px;
+  }
