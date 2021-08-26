@@ -36,13 +36,14 @@
 }
 
 .box2{
-    height: 100vh;
+    height: auto;
     width: 100%;
     background-image: url("../../images/plainBG.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     margin-bottom: 0.25%;
+    padding-bottom: 10%;
 }
 
 .boxContent{
@@ -71,12 +72,46 @@
     border-style: solid;
 }
 
+.newCases{
+    background-image: url("../../images/plainBG.jpg");
+    background-size: cover;
+    width: 250px;
+    height: 180px;
+    border-radius: 1%;
+    margin: 10px;
+    border-color: turquoise;
+    border-style: solid;
+}
+
+/* .deaths{
+    border-color: rgba(255,0,0,0.4);
+} */
+
 .allIcons{
     padding: 30px 0px 10px 65px;
+}
+
+.updateTime{
+    font-size: 20px;
+    padding-left: 9%;
+    background-color: rgba(255, 255,255,0.1);
+    width: auto;
+    margin-left: 1%;
+    margin-bottom: 2%;
+}
+
+.dataCount{
+    padding-left: 65px;
+}
+
+.graphs{
+    width: 400px;
+    height: 400px;
 }
 
 @media screen and (max-width: 960px) {
     .allCovidCard{
         margin-left: 20%;
+        margin-right: 5%;
     }
 }

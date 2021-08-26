@@ -1,9 +1,11 @@
 import React from 'react'
 import "../styles/Home.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Card , Container ,Row,Col} from 'react-bootstrap'
+import {Container ,Row,Col} from 'react-bootstrap'
+import Graphs from './Graphs';
 
-const Home = () => {
+const Home = ({data}) => {
+
     return (
         <>
             <div className="homeImage">
@@ -21,15 +23,18 @@ const Home = () => {
                 <div className="box1">
                         <div className="boxContent">
                             <div className="boxTitle"> COVID-19 impact for Sri Lanka </div>
+                            <div className="updateTime"> Last Update Time : {data.data.update_date_time} </div>
                             <div className="allCovidCard">
                                 <Container>
                                     <Row>
                                         <Col>
                                             <div className="covidCard">   
                                                 <div className="allIcons">
-                                                    <i class="fas fa-hospital-user fa-3x"/>
+                                                    <i class="fas fa-procedures fa-3x"/>
                                                 </div>
                                                 <h5 style={{paddingLeft:'10px'}}> Local New Cases </h5>
+                                                <h5 className="dataCount"> {data.data.local_new_cases} </h5>
+
                                             </div>
                                         </Col>
 
@@ -39,15 +44,17 @@ const Home = () => {
                                                     <i class="fas fa-skull-crossbones fa-3x"/>
                                                 </div>
                                                 <h5 style={{paddingLeft:'10px'}}> Local New Deaths </h5>
+                                                <h5 className="dataCount"> {data.data.local_new_deaths} </h5>
                                             </div>
                                         </Col>
 
                                         <Col>
                                             <div className="covidCard">
                                                 <div className="allIcons">
-                                                    <i class="fas fa-procedures fa-3x"/>
+                                                    <i class="fas fa-hospital-user fa-3x"/>
                                                 </div>
                                                 <h5 style={{paddingLeft:'10px'}}> Local Total Cases </h5>
+                                                <h5 className="dataCount"> {data.data.local_total_cases} </h5>
                                             </div>
                                         </Col>
 
@@ -57,35 +64,84 @@ const Home = () => {
                                                     <i class="fas fa-redo fa-3x"/>
                                                 </div>
                                                 <h5 style={{paddingLeft:'10px'}}> Local Recovered </h5>
+                                                <h5 className="dataCount"> {data.data.local_recovered} </h5>
                                             </div>
                                         </Col>
 
                                         <Col>
-                                            <div className="covidCard">
+                                            <div className="covidCard deaths">
                                                 <div className="allIcons">
                                                     <i class="fas fa-skull fa-3x"/>
                                                 </div>
                                                 <h5 style={{paddingLeft:'10px'}}> Local Total Deaths </h5>
+                                                <h5 className="dataCount"> {data.data.local_deaths} </h5>
                                             </div>
                                         </Col>
 
                                     </Row>
                                 </Container>
                             </div>
+                            <div className="graphs">
+                                <Graphs apiData={data}/>
+                            </div>
                         </div>
                     </div>
 
                     <div className="box2">
                         <div className="boxContent">
-                            <Card className="cardSL">
-                                <Card.Img variant="top"/>
-                                <Card.Body>
-                                    <Card.Title> New Deaths </Card.Title>
-                                    <Card.Text>
-                                        10
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
+                            <div className="boxTitle"> COVID-19 Global Impact </div>
+                            <div className="updateTime"> Last Update Time : 2020-09-21 34:67 </div>
+                            <div className="allCovidCard">
+                                <Container>
+                                    <Row>
+                                        <Col>
+                                            <div className="covidCard">   
+                                                <div className="allIcons">
+                                                    <i class="fas fa-hospital-user fa-3x"/>
+                                                </div>
+                                                <h5 style={{paddingLeft:'10px'}}> Global New Cases </h5>
+                                            </div>
+                                        </Col>
+
+                                        <Col>
+                                            <div className="covidCard deaths">
+                                                <div className="allIcons">
+                                                    <i class="fas fa-skull-crossbones fa-3x"/>
+                                                </div>
+                                                <h5 style={{paddingLeft:'10px'}}> Global New Deaths </h5>
+                                            </div>
+                                        </Col>
+
+                                        <Col>
+                                            <div className="covidCard">
+                                                <div className="allIcons">
+                                                    <i class="fas fa-procedures fa-3x"/>
+                                                </div>
+                                                <h5 style={{paddingLeft:'10px'}}> Global Total Cases </h5>
+                                            </div>
+                                        </Col>
+
+                                        <Col>
+                                            <div className="covidCard">
+                                                <div className="allIcons">
+                                                    <i class="fas fa-redo fa-3x"/>
+                                                </div>
+                                                <h5 style={{paddingLeft:'10px'}}> Global Recovered </h5>
+                                            </div>
+                                        </Col>
+
+                                        <Col>
+                                            <div className="covidCard deaths">
+                                                <div className="allIcons">
+                                                    <i class="fas fa-skull fa-3x"/>
+                                                </div>
+                                                <h5 style={{paddingLeft:'10px'}}> Global Total Deaths </h5>
+                                            </div>
+                                        </Col>
+
+                                    </Row>
+                                </Container>
+                            </div>
                         </div>
                     </div>
 
