@@ -1,0 +1,82 @@
+.homeImage{
+    background-image: url("../../images/homePic.jpg");
+    background-size:cover;
+    padding: 8% 10% 8% 10%;
+    top: 0;
+}
+
+.homeImageContent{
+    font-family: sans-serif;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    padding: 4%; 
+    border-width: 7px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 10px;
+    background-color: rgba(0, 0,0,0.6);
+    
+}
+
+.homeBody{
+    margin-top: 1%;
+    padding: 0;
+}
+
+.box1{
+    height: auto;
+    width: 100%;
+    background-image: url("../../images/plainBG.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin-bottom: 0.25%;
+    padding-bottom: 10%;
+}
+
+.box2{
+    height: 100vh;
+    width: 100%;
+    background-image: url("../../images/plainBG.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin-bottom: 0.25%;
+}
+
+.boxContent{
+
+}
+
+.boxTitle{
+    font-size: 30px;
+    font-weight: bold;
+    padding: 2% 0% 2% 10%;
+}
+
+.cardSL{
+    width: 14rem;
+    padding-top: 20px;
+}
+
+.covidCard{
+    background-image: url("../../images/plainBG.jpg");
+    background-size: cover;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 10px;
+    border-color: turquoise;
+    border-style: solid;
+}
+
+.allIcons{
+    padding: 30px 0px 10px 65px;
+}
+
+@media screen and (max-width: 960px) {
+    .allCovidCard{
+        margin-left: 20%;
+    }
+}
