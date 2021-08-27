@@ -1,3 +1,13 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url('../../fonts/OpenSans-LightItalic.ttf');
+  }
+
+@font-face {
+    font-family: mySecondFont;
+    src: url('../../fonts/Valeriame1.ttf');
+}
+
 .homeImage{
     background-image: url("../../images/homePic.jpg");
     background-size:cover;
@@ -51,9 +61,10 @@
 }
 
 .boxTitle{
-    font-size: 30px;
+    font-size: 34px;
     font-weight: bold;
-    padding: 2% 0% 2% 10%;
+    font-family: 'mySecondFont';
+    padding: 2% 0% 2% 3%;
 }
 
 .cardSL{
@@ -93,11 +104,20 @@
 
 .updateTime{
     font-size: 20px;
-    padding-left: 9%;
-    background-color: rgba(255, 255,255,0.1);
+    padding-left: 1%;
+    /* background-color: rgba(255, 255,255,0.1); */
     width: auto;
-    margin-left: 1%;
+    margin-left: 3%;
     margin-bottom: 2%;
+    font-family: 'myFirstFont';
+    font-weight: bold;
+    /* border-bottom-color: rgba(0, 0,0,0.2);
+    border-bottom-width: 3px;
+    border-bottom-style: solid; */
+}
+
+.hrRule{
+    margin: 2% 15% 2% 15%;
 }
 
 .dataCount{
@@ -105,8 +125,27 @@
 }
 
 .graphs{
-    width: 400px;
-    height: 400px;
+    width: 100%;
+    height: 20%;
+}
+
+.graphButtons{
+    display: grid;
+    grid-template-columns: repeat(3,20%);
+    grid-template-rows: 1fr;
+    grid-gap: 2%;
+    margin-left: 20%;
+}
+
+.graphDisplay{
+    margin-left: 12%;
+    padding: 3% 20% 3% 20%;
+    margin-top: 3%;
+    width: 70%;
+    height: 30%;
+    border-color: rgba(0, 0,0,0.2);
+    border-width: 5px;
+    border-style: solid;
 }
 
 @media screen and (max-width: 960px) {

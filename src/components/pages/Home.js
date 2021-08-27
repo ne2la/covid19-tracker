@@ -1,10 +1,21 @@
-import React from 'react'
+import React,{useState} from 'react'
 import "../styles/Home.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container ,Row,Col} from 'react-bootstrap'
-import Graphs from './Graphs';
+import {Container ,Row,Col,Button} from 'react-bootstrap'
+import PieChart from './PieChart';
+import DoughnutChart from './DoughnutChart';
+import BarChart from './BarChart';
 
 const Home = ({data}) => {
+
+    const [graphName,setGraphName] = useState('pie')
+
+    const localData = {
+        local_total_cases:data.data.local_total_cases,
+        local_recovered:data.data.local_recovered,
+        local_deaths:data.data.local_deaths,
+        local_active_cases:data.data.local_active_cases,
+    }
 
     return (
         <>
@@ -81,10 +92,27 @@ const Home = ({data}) => {
                                     </Row>
                                 </Container>
                             </div>
-                            <div className="graphs">
-                                <Graphs apiData={data}/>
-                            </div>
+                
                         </div>
+                        <hr className="hrRule"/>
+                        <div className="updateTime"> 
+                            These charts are showing local total cases, local active and recovered cases. 
+                            The data gathered from the API provided by the ministry of health in Sri Lanka.
+                            You can view these data by selecting 3 different charts 
+                        </div>
+                            <div className="graphs">
+                                <div className="graphButtons">
+                                    <Button onClick={() => setGraphName('pie')} variant='secondary'> Pie Chart </Button>
+                                    <Button onClick={() => setGraphName('bar')} variant='secondary'> Bar Chart </Button>
+                                    <Button onClick={() => setGraphName('doughnut')} variant='secondary'> Doughnut Chart </Button>
+                                </div>
+                                <div className="graphDisplay">
+                                    {graphName === 'pie' ? <PieChart apiData={localData}/> :
+                                    graphName === 'bar' ? <BarChart apiData={localData}/> :
+                                    <DoughnutChart apiData={localData}/>}
+                                </div>
+                                
+                            </div>
                     </div>
 
                     <div className="box2">

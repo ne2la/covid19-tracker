@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import Graphs from './Graphs'
 import Home from './Home'
 
 const GetData = () => {

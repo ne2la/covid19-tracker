@@ -1,17 +1,17 @@
 import React from 'react'
-import { Pie } from 'react-chartjs-2'
+import { Doughnut } from 'react-chartjs-2';
 
-const Graphs = ({apiData}) => {
+const DoughnutChart = ({apiData}) => {
 
     const graphData = {
         labels: ['Local Total Cases', 'Local Total Deaths', 'Local Recovered', 'Local Active Cases'],
         datasets: [
           {
             label: '# of Votes',
-            data: [apiData.data.local_total_cases,
-                    apiData.data.local_deaths,
-                    apiData.data.local_recovered,
-                    apiData.data.local_active_cases],
+            data: [apiData.local_total_cases,
+                    apiData.local_deaths,
+                    apiData.local_recovered,
+                    apiData.local_active_cases],
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',
@@ -29,12 +29,11 @@ const Graphs = ({apiData}) => {
         ],
       };
 
-
     return (
         <>
-            <Pie data={graphData} />
+            <Doughnut data={graphData} />
         </>
     )
 }
 
-export default Graphs
+export default DoughnutChart
