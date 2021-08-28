@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import Home from './Home'
+import NotFoundPage from "../pages/NotFoundPage"
 
 const GetData = () => {
 
@@ -20,7 +21,7 @@ const GetData = () => {
         );
     }
 
-    return <h1> No Items</h1>
+    return <NotFoundPage/>
 }
 
 export default GetData

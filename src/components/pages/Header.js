@@ -1,10 +1,13 @@
 import React from 'react'
 import '../styles/Header.css'
+import { RiVirusLine } from 'react-icons/ri';
 
 const Header = () => {
     return (
-        <div className="header">
-            <h3> COVID-19 TRACKER </h3>
+        <div className="mainHeader">
+            <h3 className='headerName'> 
+                COVID-19 TRACKER <RiVirusLine style={{fontSize:'40px'}}/> 
+            </h3>            
         </div>
     )
 }
