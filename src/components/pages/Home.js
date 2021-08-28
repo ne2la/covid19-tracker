@@ -11,10 +11,18 @@ const Home = ({data}) => {
     const [graphName,setGraphName] = useState('pie')
 
     const localData = {
+        type:'local',
         local_total_cases:data.data.local_total_cases,
         local_recovered:data.data.local_recovered,
         local_deaths:data.data.local_deaths,
         local_active_cases:data.data.local_active_cases,
+    }
+
+    const globalData ={
+        type:'global',
+        global_total_cases:data.data.global_total_cases,
+        global_recovered:data.data.global_recovered,
+        global_deaths:data.data.global_deaths,
     }
 
     return (
@@ -40,52 +48,48 @@ const Home = ({data}) => {
                                     <Row>
                                         <Col>
                                             <div className="covidCard">   
-                                                <div className="allIcons">
-                                                    <i class="fas fa-procedures fa-3x"/>
-                                                </div>
-                                                <h5 style={{paddingLeft:'10px'}}> Local New Cases </h5>
-                                                <h5 className="dataCount"> {data.data.local_new_cases} </h5>
+                            
+                                                <i class="fas fa-procedures fa-3x"/>
+                                                <h5 className="dataTitle"> Local New Cases </h5>
+                                                <h5> {data.data.local_new_cases} </h5>
 
                                             </div>
                                         </Col>
 
                                         <Col>
                                             <div className="covidCard">
-                                                <div className="allIcons">
-                                                    <i class="fas fa-skull-crossbones fa-3x"/>
-                                                </div>
-                                                <h5 style={{paddingLeft:'10px'}}> Local New Deaths </h5>
-                                                <h5 className="dataCount"> {data.data.local_new_deaths} </h5>
+                                                
+                                                <i class="fas fa-skull-crossbones fa-3x"/>                                               
+                                                <h5 className="dataTitle"> Local New Deaths </h5>
+                                                <h5> {data.data.local_new_deaths} </h5>
                                             </div>
                                         </Col>
 
                                         <Col>
                                             <div className="covidCard">
-                                                <div className="allIcons">
-                                                    <i class="fas fa-hospital-user fa-3x"/>
-                                                </div>
-                                                <h5 style={{paddingLeft:'10px'}}> Local Total Cases </h5>
-                                                <h5 className="dataCount"> {data.data.local_total_cases} </h5>
+                                                
+                                                <i class="fas fa-hospital-user fa-3x"/>                                               
+                                                <h5 className="dataTitle"> Local Total Cases </h5>
+                                                <h5> {data.data.local_total_cases} </h5>
+
                                             </div>
                                         </Col>
 
                                         <Col>
                                             <div className="covidCard">
-                                                <div className="allIcons">
-                                                    <i class="fas fa-redo fa-3x"/>
-                                                </div>
-                                                <h5 style={{paddingLeft:'10px'}}> Local Recovered </h5>
-                                                <h5 className="dataCount"> {data.data.local_recovered} </h5>
+                                                
+                                                <i class="fas fa-redo fa-3x"/>                                                
+                                                <h5 className="dataTitle"> Local Recovered </h5>
+                                                <h5> {data.data.local_recovered} </h5>
                                             </div>
                                         </Col>
 
                                         <Col>
-                                            <div className="covidCard deaths">
-                                                <div className="allIcons">
-                                                    <i class="fas fa-skull fa-3x"/>
-                                                </div>
-                                                <h5 style={{paddingLeft:'10px'}}> Local Total Deaths </h5>
-                                                <h5 className="dataCount"> {data.data.local_deaths} </h5>
+                                            <div className="covidCard">
+                                    
+                                                <i class="fas fa-skull fa-3x"/>                                                
+                                                <h5 className="dataTitle"> Local Total Deaths </h5>
+                                                <h5> {data.data.local_deaths} </h5>
                                             </div>
                                         </Col>
 
@@ -107,70 +111,91 @@ const Home = ({data}) => {
                                     <Button onClick={() => setGraphName('doughnut')} variant='secondary'> Doughnut Chart </Button>
                                 </div>
                                 <div className="graphDisplay">
+
                                     {graphName === 'pie' ? <PieChart apiData={localData}/> :
                                     graphName === 'bar' ? <BarChart apiData={localData}/> :
                                     <DoughnutChart apiData={localData}/>}
+                                    
                                 </div>
                                 
                             </div>
                     </div>
 
                     <div className="box2">
-                        <div className="boxContent">
+                    <div className="boxContent">
                             <div className="boxTitle"> COVID-19 Global Impact </div>
-                            <div className="updateTime"> Last Update Time : 2020-09-21 34:67 </div>
+                            <div className="updateTime"> Last Update Time : {data.data.update_date_time} </div>
                             <div className="allCovidCard">
                                 <Container>
                                     <Row>
                                         <Col>
                                             <div className="covidCard">   
-                                                <div className="allIcons">
-                                                    <i class="fas fa-hospital-user fa-3x"/>
-                                                </div>
-                                                <h5 style={{paddingLeft:'10px'}}> Global New Cases </h5>
-                                            </div>
-                                        </Col>
+                                                
+                                                <i class="fas fa-procedures fa-3x"/>                                                
+                                                <h5 className="dataTitle"> Global New Cases </h5>
+                                                <h5> {data.data.global_new_cases} </h5>
 
-                                        <Col>
-                                            <div className="covidCard deaths">
-                                                <div className="allIcons">
-                                                    <i class="fas fa-skull-crossbones fa-3x"/>
-                                                </div>
-                                                <h5 style={{paddingLeft:'10px'}}> Global New Deaths </h5>
                                             </div>
                                         </Col>
 
                                         <Col>
                                             <div className="covidCard">
-                                                <div className="allIcons">
-                                                    <i class="fas fa-procedures fa-3x"/>
-                                                </div>
-                                                <h5 style={{paddingLeft:'10px'}}> Global Total Cases </h5>
+                                                <i class="fas fa-skull-crossbones fa-3x"/>                                    
+                                                <h5 className="dataTitle"> Global New Deaths </h5>
+                                                <h5 className="dataCount"> {data.data.global_new_deaths} </h5>
+                                            </div>
+                                        </Col>
+
+                                        <Col>
+                                            <div className="covidCard">                                                
+                                                <i class="fas fa-hospital-user fa-3x"/>                                                
+                                                <h5 className="dataTitle"> Global Total Cases </h5>
+                                                <h5> {data.data.global_total_cases} </h5>
                                             </div>
                                         </Col>
 
                                         <Col>
                                             <div className="covidCard">
-                                                <div className="allIcons">
-                                                    <i class="fas fa-redo fa-3x"/>
-                                                </div>
-                                                <h5 style={{paddingLeft:'10px'}}> Global Recovered </h5>
+                                                <i class="fas fa-redo fa-3x"/>                                                
+                                                <h5 className="dataTitle"> Global Recovered </h5>
+                                                <h5> {data.data.global_recovered} </h5>
                                             </div>
                                         </Col>
 
                                         <Col>
-                                            <div className="covidCard deaths">
-                                                <div className="allIcons">
-                                                    <i class="fas fa-skull fa-3x"/>
-                                                </div>
-                                                <h5 style={{paddingLeft:'10px'}}> Global Total Deaths </h5>
+                                            <div className="covidCard">                                                
+                                                <i class="fas fa-skull fa-3x"/>                                            
+                                                <h5 className="dataTitle"> Global Total Deaths </h5>
+                                                <h5> {data.data.global_deaths} </h5>
                                             </div>
                                         </Col>
 
                                     </Row>
                                 </Container>
                             </div>
+                
                         </div>
+                        <hr className="hrRule"/>
+                        <div className="updateTime"> 
+                            These charts are showing Global total cases, Global active and recovered cases. 
+                            The data gathered from the API provided by the ministry of health in Sri Lanka.
+                            You can view these data by selecting 3 different charts 
+                        </div>
+                            <div className="graphs">
+                                <div className="graphButtons">
+                                    <Button onClick={() => setGraphName('pie')} variant='secondary'> Pie Chart </Button>
+                                    <Button onClick={() => setGraphName('bar')} variant='secondary'> Bar Chart </Button>
+                                    <Button onClick={() => setGraphName('doughnut')} variant='secondary'> Doughnut Chart </Button>
+                                </div>
+                                <div className="graphDisplay">
+                                    
+                                    {graphName === 'pie' ? <PieChart apiData={globalData}/> :
+                                    graphName === 'bar' ? <BarChart apiData={globalData}/> :
+                                    <DoughnutChart apiData={globalData}/>}
+                                
+                                </div>
+                                
+                            </div>
                     </div>
 
             </div>

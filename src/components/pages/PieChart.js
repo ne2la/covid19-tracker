@@ -3,7 +3,9 @@ import { Pie } from 'react-chartjs-2'
 
 const PieChart = ({apiData}) => {
 
-    const graphData = {
+    const dataType = apiData.type
+
+    const localData = {
         labels: ['Local Total Cases', 'Local Total Deaths', 'Local Recovered', 'Local Active Cases'],
         datasets: [
           {
@@ -29,10 +31,33 @@ const PieChart = ({apiData}) => {
         ],
       };
 
+      const globalData = {
+        labels: ['Global Total Cases', 'Global Total Deaths', 'Global Recovered'],
+        datasets: [
+          {
+            label: '# of Votes',
+            data: [apiData.global_total_cases,
+                    apiData.global_deaths,
+                    apiData.global_recovered],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
+            ],
+            borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+            ],
+            borderWidth: 1,
+          },
+        ],
+      };  
+
 
     return (
         <>
-            <Pie data={graphData} />
+            {dataType === 'local' ? <Pie data={localData} /> : <Pie data={globalData}/> }
         </>
     )
 }
