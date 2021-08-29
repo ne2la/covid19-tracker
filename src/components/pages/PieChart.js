@@ -1,5 +1,6 @@
 import React from 'react'
 import { Pie } from 'react-chartjs-2'
+import NotFoundPage from '../pages/NotFoundPage'
 
 const PieChart = ({apiData}) => {
 
@@ -57,7 +58,7 @@ const PieChart = ({apiData}) => {
 
     return (
         <>
-            {dataType === 'local' ? <Pie data={localData} /> : <Pie data={globalData}/> }
+            {dataType === 'local' ? <Pie data={localData} /> : dataType === 'global' ? <Pie data={globalData}/> : <NotFoundPage/>}
         </>
     )
 }

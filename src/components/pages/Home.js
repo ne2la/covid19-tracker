@@ -5,6 +5,7 @@ import {Container ,Row,Col,Button} from 'react-bootstrap'
 import PieChart from './PieChart';
 import DoughnutChart from './DoughnutChart';
 import BarChart from './BarChart';
+import NotFoundPage from './NotFoundPage';
 
 const Home = ({data}) => {
 
@@ -113,8 +114,9 @@ const Home = ({data}) => {
                                 <div className="graphDisplay">
 
                                     {graphName === 'pie' ? <PieChart apiData={localData}/> :
-                                    graphName === 'bar' ? <BarChart apiData={localData}/> :
-                                    <DoughnutChart apiData={localData}/>}
+                                    graphName === 'bar' ? <BarChart apiData={localData}/> : 
+                                    graphName === 'doughnut' ? <DoughnutChart apiData={localData}/> : 
+                                    <NotFoundPage/>}
                                     
                                 </div>
                                 
@@ -191,7 +193,8 @@ const Home = ({data}) => {
                                     
                                     {graphName === 'pie' ? <PieChart apiData={globalData}/> :
                                     graphName === 'bar' ? <BarChart apiData={globalData}/> :
-                                    <DoughnutChart apiData={globalData}/>}
+                                    graphName === 'doughnut' ? <DoughnutChart apiData={globalData}/> :
+                                    <NotFoundPage/>}
                                 
                                 </div>
                                 

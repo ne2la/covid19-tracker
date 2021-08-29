@@ -1,5 +1,6 @@
 import React from 'react'
 import { Bar } from 'react-chartjs-2';
+import NotFoundPage from '../pages/NotFoundPage'
 
 const BarChart = ({apiData}) => {
 
@@ -56,7 +57,7 @@ const BarChart = ({apiData}) => {
 
     return (
         <>
-            {dataType === 'local' ? <Bar data={localData} /> : <Bar data={globalData}/> }
+            {dataType === 'local' ? <Bar data={localData} /> : dataType === 'global' ? <Bar data={globalData}/> : <NotFoundPage/> }
         </>
     )
 }

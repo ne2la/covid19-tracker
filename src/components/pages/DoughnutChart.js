@@ -1,5 +1,6 @@
 import React from 'react'
 import { Doughnut } from 'react-chartjs-2';
+import NotFoundPage from '../pages/NotFoundPage'
 
 const DoughnutChart = ({apiData}) => {
 
@@ -56,7 +57,7 @@ const DoughnutChart = ({apiData}) => {
 
     return (
         <>
-            {dataType === 'local' ? <Doughnut data={localData} /> : <Doughnut data={globalData}/> }
+            {dataType === 'local' ? <Doughnut data={localData} /> : dataType === 'global' ? <Doughnut data={globalData}/> : <NotFoundPage/> }
         </>
     )
 }
