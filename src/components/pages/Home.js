@@ -6,6 +6,7 @@ import PieChart from './PieChart';
 import DoughnutChart from './DoughnutChart';
 import BarChart from './BarChart';
 import NotFoundPage from './NotFoundPage';
+import LineChart from './LineChart';
 
 const Home = ({data}) => {
 
@@ -24,6 +25,11 @@ const Home = ({data}) => {
         global_total_cases:data.data.global_total_cases,
         global_recovered:data.data.global_recovered,
         global_deaths:data.data.global_deaths,
+    }
+
+    const dailyTestdata = {
+        pcr_data:data.data.daily_pcr_testing_data,
+        antigen_data:data.data.daily_antigen_testing_data,
     }
 
     return (
@@ -183,22 +189,40 @@ const Home = ({data}) => {
                             The data gathered from the API provided by the ministry of health in Sri Lanka.
                             You can view these data by selecting 3 different charts 
                         </div>
-                            <div className="graphs">
-                                <div className="graphButtons">
-                                    <Button onClick={() => setGraphName('pie')} variant='secondary'> Pie Chart </Button>
-                                    <Button onClick={() => setGraphName('bar')} variant='secondary'> Bar Chart </Button>
-                                    <Button onClick={() => setGraphName('doughnut')} variant='secondary'> Doughnut Chart </Button>
-                                </div>
-                                <div className="graphDisplay">
-                                    
-                                    {graphName === 'pie' ? <PieChart apiData={globalData}/> :
-                                    graphName === 'bar' ? <BarChart apiData={globalData}/> :
-                                    graphName === 'doughnut' ? <DoughnutChart apiData={globalData}/> :
-                                    <NotFoundPage/>}
-                                
-                                </div>
-                                
+                        <div className="graphs">
+                            <div className="graphButtons">
+                                <Button onClick={() => setGraphName('pie')} variant='secondary'> Pie Chart </Button>
+                                <Button onClick={() => setGraphName('bar')} variant='secondary'> Bar Chart </Button>
+                                <Button onClick={() => setGraphName('doughnut')} variant='secondary'> Doughnut Chart </Button>
                             </div>
+                            <div className="graphDisplay">
+                                
+                                {graphName === 'pie' ? <PieChart apiData={globalData}/> :
+                                graphName === 'bar' ? <BarChart apiData={globalData}/> :
+                                graphName === 'doughnut' ? <DoughnutChart apiData={globalData}/> :
+                                <NotFoundPage/>}
+                            
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div className='box3'>
+                        <div className="boxContent">
+                            <div className="boxTitle"> Daily Testing </div>
+                            <div className="updateTime">                                 
+                                These Line Charts are showing pcr testing count and antigen testing Count
+                                in the past fifty days.<br/>
+                                Total PCR testing count : {data.data.total_pcr_testing_count}<br/>
+                                Total Antigen testing count : {data.data.total_antigen_testing_count}<br/>
+                            </div>                            
+                            <div className="lineGraphs">
+                                <div className="lineGraphDisplay">
+                                    <LineChart apiData={dailyTestdata}/>
+                                </div>
+                            </div>
+
+                        </div>    
                     </div>
 
             </div>
