@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import "../styles/Home.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container ,Row,Col,Button} from 'react-bootstrap'
@@ -7,6 +7,8 @@ import DoughnutChart from './DoughnutChart';
 import BarChart from './BarChart';
 import NotFoundPage from './NotFoundPage';
 import LineChart from './LineChart';
+import Aos from 'aos';
+import "aos/dist/aos.css"
 
 const Home = ({data}) => {
 
@@ -31,6 +33,10 @@ const Home = ({data}) => {
         pcr_data:data.data.daily_pcr_testing_data,
         antigen_data:data.data.daily_antigen_testing_data,
     }
+
+    useEffect(() => {
+        Aos.init({duration: 1000 })
+    },[]);
 
     return (
         <>
@@ -117,7 +123,7 @@ const Home = ({data}) => {
                                     <Button onClick={() => setGraphName('bar')} variant='secondary'> Bar Chart </Button>
                                     <Button onClick={() => setGraphName('doughnut')} variant='secondary'> Doughnut Chart </Button>
                                 </div>
-                                <div className="graphDisplay">
+                                <div data-aos = "fade-right" className="graphDisplay">
 
                                     {graphName === 'pie' ? <PieChart apiData={localData}/> :
                                     graphName === 'bar' ? <BarChart apiData={localData}/> : 
@@ -195,7 +201,7 @@ const Home = ({data}) => {
                                 <Button onClick={() => setGraphName('bar')} variant='secondary'> Bar Chart </Button>
                                 <Button onClick={() => setGraphName('doughnut')} variant='secondary'> Doughnut Chart </Button>
                             </div>
-                            <div className="graphDisplay">
+                            <div data-aos = "fade-right" className="graphDisplay">
                                 
                                 {graphName === 'pie' ? <PieChart apiData={globalData}/> :
                                 graphName === 'bar' ? <BarChart apiData={globalData}/> :
@@ -217,7 +223,7 @@ const Home = ({data}) => {
                                 Total Antigen testing count : {data.data.total_antigen_testing_count}<br/>
                             </div>                            
                             <div className="lineGraphs">
-                                <div className="lineGraphDisplay">
+                                <div data-aos = "fade-bottom" className="lineGraphDisplay">
                                     <LineChart apiData={dailyTestdata}/>
                                 </div>
                             </div>
